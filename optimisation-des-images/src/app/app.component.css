@@ -1,0 +1,21 @@
+#couverture {
+    display: flex;
+    justify-content: center;
+}
+
+#gallerie {
+    margin-top:40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 20px;
+}
+.photo {
+    border:2px white solid;
+    width:400px;
+    height:400px;
+    justify-self: center;
+}
+.photo img {
+    width:100%;
+    height: 100%;
+}
