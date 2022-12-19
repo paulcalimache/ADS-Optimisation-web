@@ -1,21 +1,24 @@
-import { AfterViewChecked, Component } from '@angular/core';
+import { ChangeDetectorRef, AfterViewInit, Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewChecked{
+export class AppComponent implements AfterViewInit{
   title = 'optimisation-des-images';
 
-  private heroImgBefore = '../assets/photo_foret_tiny.webp';
-  private heroImgAfter = '../assets/photo_foret.webp';
+  public HeroImg!: string;
+  public isLoaded!: boolean;
 
-  public HeroImg = this.heroImgBefore;
-  public isLoaded = false;
+  constructor(private cdRef: ChangeDetectorRef) {
+    this.HeroImg = '../assets/photo_foret_tiny.webp';
+    this.isLoaded = false;
+  }
 
-  ngAfterViewChecked() {
-    this.HeroImg = this.heroImgAfter;
+  ngAfterViewInit() {
+    this.HeroImg = '../assets/photo_foret.webp';
     this.isLoaded = true;
+    this.cdRef.detectChanges()
   }
 }
