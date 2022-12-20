@@ -25,3 +25,8 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+## PurgeCSS
+
+purgecss --css ./dist/lazy-loading/styles.d2c2f71c3dd6ccbf.css --content ./dist/lazy-loading//index.html ./dist/lazy-loading/*.js --output ./dist/lazy-loading/styles.d2c2f71c3dd6ccbf.css 

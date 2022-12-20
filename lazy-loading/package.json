@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "purgecss": "node purgecss.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -35,12 +36,16 @@
     "@angular/cli": "~14.2.3",
     "@angular/compiler-cli": "^14.2.0",
     "@types/jasmine": "~4.0.0",
+    "child_process": "^1.0.2",
+    "fs": "^0.0.1-security",
     "jasmine-core": "~4.3.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "path": "^0.12.7",
+    "purgecss": "^5.0.0",
     "source-map-explorer": "^2.5.3",
     "typescript": "~4.7.2"
   }
