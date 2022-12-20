@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ContactComponent } from './contact/contact.component';
 import { ContactModule } from './contact/contact.module';
+import { GalerieModule } from './galerie/galerie.module';
 
 
 

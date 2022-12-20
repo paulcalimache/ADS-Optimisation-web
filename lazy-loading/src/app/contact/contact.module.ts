@@ -9,6 +9,11 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
+import {AccordionModule} from 'primeng/accordion';
+import {SlideMenuModule} from 'primeng/slidemenu';
+import {StepsModule} from 'primeng/steps';
+import {Dock, DockModule} from 'primeng/dock';
 
 @NgModule({
   declarations: [
@@ -25,6 +30,11 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatIconModule,
     MatDividerModule,
     MatProgressSpinnerModule,
+    NgbProgressbarModule,
+    AccordionModule,
+    SlideMenuModule,
+    StepsModule,
+    DockModule,
   ],
 })
 export class ContactModule { }

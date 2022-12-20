@@ -1,3 +1,30 @@
 <p>galerie works!</p>
 <img src="../../assets/lens.jpg"/>
 <img src="../../assets/balloons.jpg"/>
+<p-tabView>
+    <p-tabPanel header="Header 1">
+       Content 1
+    </p-tabPanel>
+    <p-tabPanel header="Header 2">
+        Content 2
+    </p-tabPanel>
+    <p-tabPanel header="Header 3">
+        Content 3
+    </p-tabPanel>
+</p-tabView>
+<p-galleria>
+    <ng-template pTemplate="item" let-item>
+        <img [src]="item.previewImageSrc" [alt]="item.alt" />
+    </ng-template>
+</p-galleria>
+<p-carousel>
+    <ng-template let-car pTemplate="item">
+        Content to display
+    </ng-template>
+</p-carousel>
+<div pDraggable="dd">Draggable Div</div>
+<div pDroppable="dd">Droppable Div</div>
+<p-chip label="Text Only">A</p-chip>
+<p-chip label="Text Only">B</p-chip>
+<p-chip label="Text Only">C</p-chip>
+<p-progressSpinner></p-progressSpinner>
