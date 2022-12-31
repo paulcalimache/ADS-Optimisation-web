@@ -23,7 +23,7 @@ const dataMsg = {
 
 let listDataMsg = []
 
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 25; i++) {
   dataMsg.id = i;
   listDataMsg.push(dataMsg);
 }
@@ -32,7 +32,7 @@ io.on("connection", socket => {
   socket.on("GET", () => {
     console.log('received');
     io.emit("MSG", listDataMsg);
-  })
+  });
 })
 
 httpServer.listen(3001, () => {

@@ -9,46 +9,71 @@ import { SocketIoConfig, Socket } from 'ngx-socket-io';
 })
 export class AppComponent implements OnInit {
   title = 'socket-vs-http';
+  // startTime: number;
 
+  public ite: number = 10;
   public message: string | undefined;
+  public chatMsgList: string[] = [];
+
+  public dataMsg: DataMsg = {
+    id:1,
+    arrayId: [],
+    title: '',
+    shortmsg: '',
+    paragraphe: '',
+  };
 
   private httpHeader = new HttpHeaders({
     'Access-Control-Allow-Origin':'*',
   });
 
   constructor(private http: HttpClient, private socket: Socket) {
+    // this.startTime = performance.now();
+    // this.httpGet();
+    // this.socketGet();
   };
 
   ngOnInit(): void {
   }
 
+  getHttpDataMsg() {
+    this.http.get<DataMsg[]>('http://localhost:3000', {headers: this.httpHeader}).subscribe(response => {
+      this.dataMsg = response[0];
+    })
+  }
+  getSocketDataMsg() {
+    this.socket.emit('GET');
+    this.socket.fromEvent<DataMsg[]>('MSG').subscribe(response => {
+      this.dataMsg = response[0];
+    });
+  }
+
   httpGet() {
-    let perfoCount = [];
-    for (let i = 0; i <= 50 ; i++) {
-      let startTime = performance.now();
+    for (let i = 0; i <= this.ite ; i++) {
       this.http.get<DataMsg[]>('http://localhost:3000', {headers: this.httpHeader}).subscribe(response => {
+        if (i === this.ite) {
+          let endTime = performance.now();
+          this.dataMsg.title = i.toString();
+          // console.log('Temps : ', (endTime - this.startTime))
+        }
       });
-      let endTime = performance.now();
-      perfoCount.push(endTime - startTime);
-      // console.log("http elapsed time : " + (endTime - startTime));
     }
-    console.log("Moyenne http get: ", this.moyenne(perfoCount));
-    console.log("SOMME http get: ", this.somme(perfoCount));
   };
 
   socketGet() {
-    let perfoCount: number[] = [];
-    for (let i = 0; i <= 50 ; i++) {
-      let startTime = performance.now();
+    let count = 0;
+    for (let i = 0; i <= this.ite ; i++) {
       this.socket.emit('GET');
-      this.socket.fromEvent<DataMsg[]>('MSG').subscribe(response => {
-      });
-      let endTime = performance.now();
-      perfoCount.push(endTime - startTime);
-      // console.log("socket elapsed time : " + (endTime - startTime));
     }
-    console.log("Moyenne socket get: ", this.moyenne(perfoCount));
-    console.log("SOMME socket get: ", this.somme(perfoCount));
+    this.socket.fromEvent<DataMsg[]>('MSG').subscribe(response => {
+      count = count + 1;
+      if (count === this.ite) {
+        let endTime = performance.now();
+        this.dataMsg.title = count.toString();
+        // console.log('Temps : ', (endTime - this.startTime))g
+        
+      }
+    });
   };
 
   moyenne(t: number[]): number {
