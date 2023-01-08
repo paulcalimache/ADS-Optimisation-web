@@ -10,6 +10,6 @@ ng build --configuration=production --optimization=true
 
 ## Application déployée sur Netlify
 
-Version optimisée : https://dapper-cendol-b7d23a.netlify.app/
+Version optimisée : https://app-compress-and-minif.netlify.app/
 
-Version sans optimisation : https://curious-gumption-96df50.netlify.app/
+Version sans optimisation : https://app-no-compress-no-minif.netlify.app/
